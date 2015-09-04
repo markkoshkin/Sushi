@@ -1,0 +1,19 @@
+﻿
+
+@foreach (var d in ViewBag.Rol)
+{
+     var str = d.ProductId.ToString();
+        {
+            str += ".jpeg";
+        }
+        
+         <div class="col-xs-12 col-sm-6 col-md-4">
+            <h3>@d.NameRus</h3>
+            <img src="../../Content/Images/Products/@str"/>
+            <div>
+                <span>@d.Price</span>
+                <button class="btn">Заказать</button>
+            </div>
+        </div>
+
+}

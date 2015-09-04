@@ -1,0 +1,153 @@
+﻿body {
+    font-size: .85em;
+    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+    color: #232323;
+    background-color: #fff;
+}
+
+header, footer, nav, section {
+    display: block;
+}
+
+
+/* Styles for basic forms
+-----------------------------------------------------------*/
+fieldset {
+    border: 1px solid #ddd;
+    padding: 0 1.4em 1.4em 1.4em;
+    margin: 0 0 1.5em 0;
+}
+
+legend {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+textarea {
+    min-height: 75px;
+}
+
+.editor-label {
+    margin: 1em 0 0 0;
+}
+
+.editor-field {
+    margin: 0.5em 0 0 0;
+}
+
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field-validation-error {
+    color: #f00;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+.input-validation-error {
+    border: 1px solid #f00;
+    background-color: #fee;
+}
+
+.validation-summary-errors {
+    font-weight: bold;
+    color: #f00;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+/*----------------------------------------------*/
+
+
+.container{
+	background: #FFF7E9;
+}
+
+.navbar-header{
+	margin-bottom:50px;
+}
+
+.navbar{
+	height:75px;
+}
+
+.navbar-brand {
+	margin-top:0px;
+}
+
+.btn-hover{
+	background-image : url(../Images/Controls/search-icon.png);
+	background-repeat: no-repeat;
+	height:30px;
+	width: 30px;
+}
+.btn-hover:hover{
+	background-image: url(../Images/Controls/search-icon-hover.png) no-repeat;
+	background-repeat: no-repeat;
+}
+
+.basket{
+	float: right;
+}
+
+.container-fluid  .navbar-collapse{
+	width: 600px;
+	margin: 0 auto;
+}
+
+.logo{
+	background: url(../Images/Controls/logo-with-bg.png) no-repeat; 
+	background-size: 248px 100px; 
+	position: absolute; 
+	width: 248px;
+	height: 100px; 
+	top: 0; 
+	left: 30px;
+}
+
+.basket{
+	background: url(../Images/Controls//bg-basket.png) no-repeat; 
+	background-size: 248px 100px; 
+	position: absolute; 
+	width: 248px;
+	height: 100px; 
+	top: 0; 
+	right: 30px;
+}
+
+.footer{
+	background: #444444;
+}
+
+.footer img{
+	margin:10px;
+}
+
+.orange-line{
+	height: 10px;
+	background: #EF5A06;
+    background: -moz-linear-gradient(left, #EF5A06 0%, #F1882A 100%);
+    background: -webkit-linear-gradient(left, #EF5A06 0%, #F1882A 100%);
+    background: -o-linear-gradient(left, #EF5A06 0%, #F1882A 100%);
+    background: -ms-linear-gradient(left, #EF5A06 0%, #F1882A 100%);
+    background: linear-gradient(left, #EF5A06 0%, #F1882A 100%);
+}
+
+.footer-phone{
+	float: right;
+	color: #E3E3E3;
+	margin: 15px;
+}
+
+.btn{
+	background: #EF5A06;
+    background: -moz-linear-gradient(left, #EF5A06 0%, #F1882A 100%);
+    background: -webkit-linear-gradient(left, #EF5A06 0%, #F1882A 100%);
+    background: -o-linear-gradient(left, #EF5A06 0%, #F1882A 100%);
+    background: -ms-linear-gradient(left, #EF5A06 0%, #F1882A 100%);
+    background: linear-gradient(left, #EF5A06 0%, #F1882A 100%);
+	border-radius:2px;
+}

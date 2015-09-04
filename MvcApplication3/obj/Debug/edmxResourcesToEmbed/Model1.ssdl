@@ -1,0 +1,238 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SushiTest1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SushiTest1.dbo.AdditionProdutForProduct' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="AdditionProdutForProduct">
+    <Key>
+      <PropertyRef Name="ProductId" />
+      <PropertyRef Name="ProductAdditionId" />
+    </Key>
+    <Property Name="ProductId" Type="int" Nullable="false" />
+    <Property Name="ProductAdditionId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Administrator">
+    <Key>
+      <PropertyRef Name="Login" />
+    </Key>
+    <Property Name="Login" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="CategoryId" />
+    </Key>
+    <Property Name="CategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NameRus" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="NameUkr" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SushiTest1.dbo.OrderDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="OrderDetails">
+    <Key>
+      <PropertyRef Name="OrderDetailsId" />
+      <PropertyRef Name="ProductId" />
+      <PropertyRef Name="Count" />
+    </Key>
+    <Property Name="OrderDetailsId" Type="int" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+    <Property Name="Count" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Orders">
+    <Key>
+      <PropertyRef Name="OrderId" />
+    </Key>
+    <Property Name="OrderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Street" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="House" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Room" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="StatusId" Type="int" Nullable="false" />
+    <Property Name="AddDate" Type="datetime2" Precision="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OrderStatus">
+    <Key>
+      <PropertyRef Name="StatusId" />
+    </Key>
+    <Property Name="StatusId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StatusNameRus" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="StatusNameUkr" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProductId" />
+    </Key>
+    <Property Name="ProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoryId" Type="int" Nullable="false" />
+    <Property Name="NameRus" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="NameUkr" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="NamberOfOrders" Type="int" Nullable="false" />
+    <Property Name="Count" Type="int" />
+    <Property Name="Energy" Type="int" Nullable="false" />
+    <Property Name="Balance" Type="int" Nullable="false" />
+    <Property Name="Price" Type="decimal" Precision="9" Scale="2" Nullable="false" />
+    <Property Name="Sale" Type="bit" Nullable="false" />
+    <Property Name="AddDate" Type="datetime2" Precision="2" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SushiTest1.dbo.ProductIngridients' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ProductIngridients">
+    <Key>
+      <PropertyRef Name="ProductId" />
+      <PropertyRef Name="NameRus" />
+      <PropertyRef Name="NameUkr" />
+    </Key>
+    <Property Name="ProductId" Type="int" Nullable="false" />
+    <Property Name="NameRus" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="NameUkr" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductWeightDetails">
+    <Key>
+      <PropertyRef Name="ProductId" />
+    </Key>
+    <Property Name="ProductId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Vaule" Type="decimal" Precision="9" Scale="3" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_AdditionProdutForProduct_OrderDetailsId">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="AdditionProdutForProduct" Type="Self.AdditionProdutForProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="AdditionProdutForProduct">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderDetails_OrderDetailsId">
+    <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
+    <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Orders">
+        <PropertyRef Name="OrderId" />
+      </Principal>
+      <Dependent Role="OrderDetails">
+        <PropertyRef Name="OrderDetailsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderDetails_ProductId">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="OrderDetails">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orders_StatusId">
+    <End Role="OrderStatus" Type="Self.OrderStatus" Multiplicity="1" />
+    <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrderStatus">
+        <PropertyRef Name="StatusId" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="StatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_CategoryId">
+    <End Role="Category" Type="Self.Category" Multiplicity="1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="CategoryId" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductIngridients_ProductId">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="ProductIngridients" Type="Self.ProductIngridients" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="ProductIngridients">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductWeightDetails_ProductId">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="ProductWeightDetails" Type="Self.ProductWeightDetails" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="ProductWeightDetails">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SushiTest1ModelStoreContainer">
+    <EntitySet Name="Administrator" EntityType="Self.Administrator" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrderStatus" EntityType="Self.OrderStatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductWeightDetails" EntityType="Self.ProductWeightDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AdditionProdutForProduct" EntityType="Self.AdditionProdutForProduct" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [AdditionProdutForProduct].[ProductId] AS [ProductId], 
+    [AdditionProdutForProduct].[ProductAdditionId] AS [ProductAdditionId]
+    FROM [dbo].[AdditionProdutForProduct] AS [AdditionProdutForProduct]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="OrderDetails" EntityType="Self.OrderDetails" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [OrderDetails].[OrderDetailsId] AS [OrderDetailsId], 
+    [OrderDetails].[ProductId] AS [ProductId], 
+    [OrderDetails].[Count] AS [Count]
+    FROM [dbo].[OrderDetails] AS [OrderDetails]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="ProductIngridients" EntityType="Self.ProductIngridients" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ProductIngridients].[ProductId] AS [ProductId], 
+    [ProductIngridients].[NameRus] AS [NameRus], 
+    [ProductIngridients].[NameUkr] AS [NameUkr]
+    FROM [dbo].[ProductIngridients] AS [ProductIngridients]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_AdditionProdutForProduct_OrderDetailsId" Association="Self.FK_AdditionProdutForProduct_OrderDetailsId">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="AdditionProdutForProduct" EntitySet="AdditionProdutForProduct" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderDetails_OrderDetailsId" Association="Self.FK_OrderDetails_OrderDetailsId">
+      <End Role="Orders" EntitySet="Orders" />
+      <End Role="OrderDetails" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderDetails_ProductId" Association="Self.FK_OrderDetails_ProductId">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="OrderDetails" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orders_StatusId" Association="Self.FK_Orders_StatusId">
+      <End Role="OrderStatus" EntitySet="OrderStatus" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_CategoryId" Association="Self.FK_Product_CategoryId">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductIngridients_ProductId" Association="Self.FK_ProductIngridients_ProductId">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="ProductIngridients" EntitySet="ProductIngridients" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductWeightDetails_ProductId" Association="Self.FK_ProductWeightDetails_ProductId">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="ProductWeightDetails" EntitySet="ProductWeightDetails" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
