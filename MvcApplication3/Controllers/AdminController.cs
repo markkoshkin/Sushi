@@ -11,10 +11,14 @@ namespace MvcApplication3.Controllers
         //
         // GET: /Admin/
 
-        public ActionResult Index()
+        public ActionResult Menu()
         {
             return View();
         }
 
+        public ActionResult Statistic()
+        {
+            return View();
+        }
     }
 }
